@@ -11,7 +11,9 @@ public class Converter
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine().trim();
         String convertedInput;
-        input.replaceAll("\\s+","");
+        input = input.replaceAll("\\s+","");
+
+        System.out.println(input);
 
         if(JSONOrXML(input) == JSON)
         {
@@ -69,7 +71,7 @@ public class Converter
             int firstIndex = 2;
             int secondIndex = input.indexOf(":") - 1;
             int thirdIndex = secondIndex + 3;
-            int fourthIndex = input.length() - 1;
+            int fourthIndex = input.length() - 2;
 
             resultString =      "<" + input.substring(firstIndex, secondIndex)
                                 + ">" 
