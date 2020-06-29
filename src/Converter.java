@@ -8,9 +8,10 @@ public class Converter
 
     public Converter()
     {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine().trim();
         String convertedInput;
+        input.replaceAll("\\s+","");
 
         if(JSONOrXML(input) == JSON)
         {
@@ -20,7 +21,7 @@ public class Converter
         {
             convertedInput = ToJson(input);
         }
-        System.out.println(ToJson(input));
+        System.out.println(convertedInput);
 
     }
 
@@ -52,9 +53,33 @@ public class Converter
 
     public String ToXML(String input)
     {   
-        // String resultString = new String("");
+        String resultString = new String("");
+        // int indexFirst = input.indexOf("\"") + 1;
+        // int indexSecond = input.indexOf()
 
 
+        if(input.contains("null"))
+        {
+            int firstIndex = input.indexOf("\"") + 1;
+            int secondIndex = input.lastIndexOf("\"");
+            resultString = "<" + input.substring(firstIndex, secondIndex) + "/>";
+        }
+        else
+        {
+            int firstIndex = 2;
+            int secondIndex = input.indexOf(":") - 1;
+            int thirdIndex = secondIndex + 3;
+            int fourthIndex = input.length() - 1;
+
+            resultString =      "<" + input.substring(firstIndex, secondIndex)
+                                + ">" 
+                                + input.substring(thirdIndex, fourthIndex)
+                                + "</"
+                                + input.substring(firstIndex, secondIndex)
+                                + ">";
+                
+        }
+        return resultString;
     }
 
     public int JSONOrXML(String input)
@@ -69,8 +94,6 @@ public class Converter
         }
 
     }
-
-
 
     public static void main(String[] args)
     {
