@@ -13,8 +13,6 @@ public class Converter
         String convertedInput;
         input = input.replaceAll("\\s+","");
 
-        System.out.println(input);
-
         if(JSONOrXML(input) == JSON)
         {
             convertedInput = ToXML(input);
