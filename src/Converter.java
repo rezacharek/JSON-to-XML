@@ -1,5 +1,6 @@
 package converter;
 import java.util.Scanner;
+import java.io.*;
 
 public class Converter
 {   
@@ -8,21 +9,27 @@ public class Converter
 
     public Converter()
     {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine().trim();
+        // Scanner scanner = new Scanner(System.in);
+        // String input = scanner.nextLine().trim();
         String convertedInput;
-        input = input.replaceAll("\\s+","");
+        File file = new File("test.txt");
+        String input; 
 
-        if(JSONOrXML(input) == JSON)
+        try
         {
-            convertedInput = ToXML(input);
+            BufferedReader reader = new BufferedReader(new FileReader("text.txt"));
+            String line;
+            while((line = reader.readLine()) != null )
+            {
+                System.out.println(line);
+            }
+            reader.close();
         }
-        else
+        catch(Exception e)
         {
-            convertedInput = ToJson(input);
-        }
-        System.out.println(convertedInput);
-
+            System.err.format("Exception occurred trying to read '%s'.", "text.txt");
+            e.printStackTrace();
+          }
     }
 
     public String ToJson(String input)
