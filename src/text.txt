@@ -1,0 +1,6 @@
+<host>127.0.0.1</host>
+{"host":"127.0.0.1"}
+{"jdk" : "1.8.9"}
+<jdk>1.8.9</jdk>
+<employee department = "manager">Garry Smith</employee>
+<person rate = "1" name = "Torvalds" />
